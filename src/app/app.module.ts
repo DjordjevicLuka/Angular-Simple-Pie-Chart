@@ -2,13 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-
+import { DcSimplePieChartModule } from 'dc-simple-pie-chart';
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    DcSimplePieChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "dc-simple-pie-chart": [
+        "dist/dc-simple-pie-chart"
+      ],
+      "dc-simple-pie-chart/*": [
+        "dist/dc-simple-pie-chart/*"
+      ]
+    }
   }
 }

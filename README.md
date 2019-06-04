@@ -1,27 +1,102 @@
-# DcSimpleChart
+# Simple pie chart in 5 minutes
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
+As its name says it is pretty simple pie chart component made with Angular 7 as its only dependency.
 
-## Development server
+## Installation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+```bash
+npm i dc-simple-pie-chart --save
+```
 
-## Code scaffolding
+## Usage
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+First, we need to import our library into our app.module.ts(in this case) or any particular module in which you want to use charts.
 
-## Build
+```
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+import { AppComponent } from './app.component';
+import { DcSimplePieChartModule } from 'dc-simple-pie-chart';
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    DcSimplePieChartModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
 
-## Running unit tests
+Then in the component in which we intend to use charts, we need to give it some data to work with. So here is our data model with some dummy data in our app.component.ts file.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+import { Component } from '@angular/core';
 
-## Running end-to-end tests
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.sass']
+})
+export class AppComponent {
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+  // Here we have an array of 2 charts
+  chartData: any = [
+      {
+        'title': 'something',
+        'chartValues': [
+          {
+            'name': 'Inventoried',
+            'value': 35,
+            'color': '#1EB6FF'
+          },
+          {
+            'name': 'Not Inventoried',
+            'value': 65,
+            'color': '#A2D729'
+          }
+        ]
+      },
+      {
+        'title': 'something',
+        'chartValues': [
+          {
+            'name': 'Inventoried',
+            'value': 35,
+            'color': '#1EB7FF'
+          },
+          {
+            'name': 'Not Inventoried',
+            'value': 65,
+            'color': '#A2D429'
+          }
+        ]
+      }
+  ];
+}
+```
 
-## Further help
+Finally, the last step! All we have to do now is to call our chart component in our component.html file and pass the data to it.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```
+<div *ngFor="let chart of chartData; let id = index">
+  <!-- So here we have 3 inputs
+       identity is a chart id which must be unique that's why I used "chart" as the prefix,
+       data is for values,
+       and chartName is for chart name 
+  -->
+  <dc-chart [identity]="'chart' + id" 
+            [data]="chart.chartValues" 
+            [chartName]="chart.title">
+  </dc-chart>
+</div>
+```
+
+![Alt text](https://scontent.ftgd2-1.fna.fbcdn.net/v/t1.15752-9/62262051_2091188847845856_4574206746528055296_n.png?_nc_cat=100&_nc_ht=scontent.ftgd2-1.fna&oh=ed30039309cf2c6fcd29e7ae66171006&oe=5D5A5E91 "Optional title")
+
+# And there we have it pretty simple but effective pie chart in 5 minutes
+

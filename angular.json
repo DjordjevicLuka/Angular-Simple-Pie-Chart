@@ -129,6 +129,41 @@
           }
         }
       }
+    },
+    "dc-simple-pie-chart": {
+      "root": "projects/dc-simple-pie-chart",
+      "sourceRoot": "projects/dc-simple-pie-chart/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/dc-simple-pie-chart/tsconfig.lib.json",
+            "project": "projects/dc-simple-pie-chart/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dc-simple-pie-chart/src/test.ts",
+            "tsConfig": "projects/dc-simple-pie-chart/tsconfig.spec.json",
+            "karmaConfig": "projects/dc-simple-pie-chart/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/dc-simple-pie-chart/tsconfig.lib.json",
+              "projects/dc-simple-pie-chart/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "dc-simple-chart"

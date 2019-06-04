@@ -1,0 +1,18 @@
+<div class="fx-row-start-start-w-layout">
+    <div [id]="identity" class="chart-parrent"></div>
+    <div class="chart-info fx-col-start-start-w-layout">
+        <span class="inventory-overview">{{ chartName }}</span>
+          <div class="fx-row-start-start-w-layout value-layout">
+            <div class="chart-details-layout">
+                <div class="fx-row-spbt-start-w-layout chart-details" *ngFor="let chart of data">
+                  <div class="fx-row-start-start-w-layout">
+                      <div class="color-show" [ngStyle]="{'background-color': chart.color}"></div>
+                      <span class="value-info">{{ chart.name }}</span>
+                  </div> 
+                    <span class="value">{{ chart.value }}%</span>
+                  </div>
+            </div>
+          </div>
+    </div>
+</div>
+
